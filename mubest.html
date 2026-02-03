@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUBEST HOME</title>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #0b0f19;
+    color: white;
+  }
+
+  header {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(33, 2, 168);
+  }
+
+  nav {
+    background-color: rgb(11, 80, 207);
+    text-align: center;
+    padding: 12px;
+  }
+
+  nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    position: relative;
+    padding-bottom: 6px;
+  }
+
+  nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    background: #ffd700;
+    border-radius: 10px;
+    transition: 0.3s ease;
+  }
+
+  nav a:hover::after{
+    width: 100%;
+  }
+
+  .contact-hover{
+    display: inline-block;
+    position: relative;
+  }
+
+  .contact-dropdown{
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111827;
+    border: 2px solid rgb(11, 80, 207);
+    border-radius: 12px;
+    padding: 10px;
+    width: 200px;
+    display: none;
+    z-index: 10;
+  }
+
+  .contact-hover:hover .contact-dropdown{
+    display: block;
+  }
+
+  .contact-dropdown a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    border-radius: 8px;
+  }
+
+  .contact-dropdown a:hover{
+    background: rgb(11, 80, 207);
+  }
+
+  .icon{
+    width: 20px;
+    height: 20px;
+  }
+
+  .split-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* PROFILE IMAGE WITH ANIMATED BORDER */
+  .profile-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    padding: 5px;
+    animation: borderAnimation 3s linear infinite;
+  }
+
+  @keyframes borderAnimation {
+    0%{ border-color: #ff0000; }
+    25%{ border-color: #00ff00; }
+    50%{ border-color: #0000ff; }
+    75%{ border-color: #ffff00; }
+    100%{ border-color: #ff0000; }
+  }
+
+  .login-box{
+    flex: 1;
+    min-width: 300px;
+    background: #111827;
+    padding: 30px;
+    border-radius: 12px;
+  }
+
+  .login-box h2{
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffd700;
+  }
+
+  .login-box form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .login-box input, .login-box select{
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid rgb(11, 80, 207);
+    outline: none;
+    font-size: 16px;
+  }
+
+  .password-box{
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .password-box input{
+    width: 100%;
+    padding-right: 40px;
+  }
+
+  .toggle-password{
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+  }
+
+  .btn{
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    background: #25D366;
+  }
+
+  .btn:hover{
+    opacity: 0.85;
+  }
+
+  .info-box{
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+  }
+
+  .info-box h2{
+    font-size: 32px;
+    color: #ffd700;
+  }
+
+  .info-box p{
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 15px;
+  }
+
+  @media(max-width: 768px){
+    .split-container{
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+function togglePassword(){
+  const passwordInput = document.getElementById('password');
+  const toggle = document.querySelector('.toggle-password');
+
+  if(passwordInput.type === 'password'){
+    passwordInput.type = 'text';
+    toggle.textContent = '🙈';
+  } else {
+    passwordInput.type = 'password';
+    toggle.textContent = '👁️';
+  }
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <h2>WELCOME TO MUBEST CLASSES</h2>
+  <p>Login below to access your dashboard</p>
+</header>
+
+<nav>
+  <a href="mubest.html">Home</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+  <a href="skill.html">Skills</a>
+  
+  <div class="contact-hover">
+    <a href="contact.html">Contact</a>
+    <div class="contact-dropdown">
+      <a href="https://wa.me/2348027844666?text=hello%20mubest%20from%20your%20website" target="_blank">
+        <img src="whatsapp.jfif" class="icon"> WhatsApp
+      </a>
+      <a href="#" target="_blank">
+        <img src="facebook.jfif" class="icon"> Facebook
+      </a>
+      <a href="#" target="_blank">
+        <img src="tiktok.jfif" class="icon"> TikTok
+      </a>
+      <a href="#" target="_blank">
+        <img src="instagram.jfif" class="icon"> Instagram
+      </a>
+      <a href="mailto:yourmail@gmail.com" target="_blank">
+        <img src="email.jfif" class="icon"> Email
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="split-container">
+
+  <!-- LEFT: IMAGE + LOGIN FORM -->
+  <div class="login-box">
+    <div class="profile-container">
+      <img src="myimage.jpg" alt="Mubest" class="profile-img">
+    </div>
+
+    <h2>Login</h2>
+    <form>
+      <input type="email" placeholder="Email Address" required>
+
+      <div class="password-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+
+      <p style="margin-top:15px;">
+        Don't have an account?
+        <a href="register.html" style="color:#ffd700; font-weight:bold;">Sign Up</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- RIGHT: INFO / WELCOME TEXT -->
+  <div class="info-box">
+    <h2>Welcome to Mubest Classes</h2>
+    <p>
+      Join our amazing courses and improve your skills in <strong>Web Design</strong> and <strong>Graphic Design</strong>.
+    </p>
+    <p>
+      Register today to access tutorials, assignments, and special resources. Everything will be available after login.
+    </p>
+    <p>
+      Let's grow together and learn technology step by step!
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
